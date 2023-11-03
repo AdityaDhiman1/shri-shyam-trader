@@ -1,4 +1,4 @@
-const BASE_URL = "https://shrishyamtraders.onrender.com";
+const BASE_URL = "https://shrishyamtraders.onrender.com/";
 
 
 export const FOODS_URL = BASE_URL+'/api/foods';
