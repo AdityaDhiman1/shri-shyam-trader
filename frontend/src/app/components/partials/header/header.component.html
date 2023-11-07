@@ -1,4 +1,9 @@
-<ngx-loading-bar></ngx-loading-bar>
+<!-- <ngx-loading-bar></ngx-loading-bar> -->
+
+<div *ngIf="ls.isLoadingProgressBar | async" class="progress-bar">
+  <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+  <mat-spinner style="top:50%; left:50%"></mat-spinner>
+</div>
 
 <header>
   <div class="container">
@@ -6,13 +11,13 @@
     <nav>
       <ul>
         <li *ngIf="!isAuth">
-          <a  routerLink="/login">Login</a>
+          <a routerLink="/login">Login</a>
         </li>
         <li *ngIf="isAuth" class="menu-container">
           <a routerLink="/dashboard">{{user.name}}</a>
           <div class="menu">
-            <a  routerLink="/profile">Profile</a>
-            <a  routerLink="/orders">Orders</a>
+            <a routerLink="/profile">Profile</a>
+            <a routerLink="/orders">Orders</a>
             <a (click)="logout()">Logout</a>
           </div>
         </li>

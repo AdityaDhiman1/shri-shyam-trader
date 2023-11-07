@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { LoadingService } from 'src/app/services/loading.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/shared/models/user';
 
@@ -11,7 +12,7 @@ import { User } from 'src/app/shared/models/user';
 export class HeaderComponent {
   cartQuantity = 0;
   user!:User;
-  constructor(cartService: CartService, private userService:UserService) {
+  constructor(cartService: CartService, private userService:UserService, public ls:LoadingService) {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     })

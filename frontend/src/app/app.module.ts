@@ -22,6 +22,7 @@ import { DefaultButtonComponent } from './components/partials/default-button/def
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { LoadingComponent } from './components/partials/loading/loading.component';
 import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { ProgressInterceptor } from './shared/interceptors/progress.interceptor';
 import { AutInterceptor } from './auth/aut.interceptor';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
@@ -31,7 +32,8 @@ import { PaypalButtonComponent } from './components/partials/paypal-button/paypa
 import { OrderTrackPageComponent } from './components/pages/order-track-page/order-track-page.component';
 import { StarRatingComponent } from './components/partials/star-rating/star-rating.component';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
       positionClass: 'toast-bottom-right',
       newestOnTop: false
     }),
-    LoadingBarRouterModule
+    LoadingBarRouterModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [{
@@ -78,7 +82,10 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
   },
   {
     provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
-  }
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true
+    }
 
   ],
   bootstrap: [AppComponent]

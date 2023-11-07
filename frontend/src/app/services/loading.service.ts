@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class LoadingService {
   private isLoadingSubject = new BehaviorSubject<boolean>(false);
+  public isLoadingProgressBar: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   showLoading() {
     this.isLoadingSubject.next(true);
