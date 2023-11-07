@@ -9,9 +9,10 @@ import orderRouter from './routers/order.router';
 import { connectDB } from './configs/database.config';
 const app = express();
 app.use(express.json());
+// app.use(cors());
 app.use(cors({
     credentials:true,
-    origin:["https://shrishyamtraders.onrender.com/"]
+    origin:["https://shrishyamtraders.onrender.com/",]
 }));
 
 app.use("/api/foods", foodRouter);
